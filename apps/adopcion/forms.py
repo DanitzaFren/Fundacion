@@ -1,30 +1,29 @@
 from django import forms
 
-from apps.mascota.models import Mascota, Vacuna 
+from apps.mascota.models import Mascota
+
 
 class MascotaForm(forms.ModelForm):
 
 	class Meta:
 		model = Mascota
 
-		fields = [ 
-			'nombre' ,
+		fields = [
+			'nombre',
 			'sexo',
-		   	'edad_aproximada' ,
-		 	'fecha_rescate' ,
-		 	'persona' ,
-		 	'vacuna' ,
-
+			'edad_aproximada',
+			'fecha_rescate',
+			'persona',
+			'vacuna',
 		]
 		labels = {
-			'nombre' : 'Nombre' ,
-			'sexo' : 'Sexo', 
-		   	'edad_aproximada' : 'Edad aproximada' ,
-		 	'fecha_rescate' : 'Fecha de rescate',
-		 	'persona' : 'Adoptante' ,
-		 	'vacuna' : 'Vacunas',
-			}
-
+			'nombre': 'Nombre',
+			'sexo': 'Sexo',
+			'edad_aproximada': 'Edad aproximada',
+			'fecha_rescate':'Fecha de rescate',
+			'persona': 'Adoptante',
+			'vacuna': 'Vacunas',
+		}
 		widgets = {
 			'nombre': forms.TextInput(attrs={'class':'form-control'}),
 			'sexo': forms.TextInput(attrs={'class':'form-control'}),
@@ -33,4 +32,3 @@ class MascotaForm(forms.ModelForm):
 			'persona': forms.Select(attrs={'class':'form-control'}),
 			'vacuna': forms.CheckboxSelectMultiple(),
 		}
-			

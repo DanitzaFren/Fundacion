@@ -14,8 +14,8 @@ class Persona(models.Model):
 		return '{} {}'.format(self.nombre, self.apellidos)
 
 
-class PersonaPostAdmin(admin.ModelAdmin):
-	list_display = ('nombre','apellidos','edad','telefono','email','domicilio')
-
-admin.site.register(Persona,PersonaPostAdmin)
+class Solicitud(models.Model):
+	persona = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+	numero_mascotas = models.IntegerField()
+	razones = models.TextField()
 
