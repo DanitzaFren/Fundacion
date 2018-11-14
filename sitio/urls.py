@@ -20,5 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mascota/', include ('apps.mascota.urls')),
+    path('solicitud/',include('apps.adopcion.urls'))
     
 ]

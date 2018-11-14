@@ -1,34 +1,59 @@
 from django import forms
 
-from apps.mascota.models import Mascota
+from apps.adopcion.models import Persona, Solicitud
 
 
-class MascotaForm(forms.ModelForm):
+class PersonaForm(forms.ModelForm):
 
 	class Meta:
-		model = Mascota
+		model = Persona
 
 		fields = [
-			'nombre',
-			'sexo',
-			'edad_aproximada',
-			'fecha_rescate',
-			'persona',
-			'vacuna',
+			'nombre' ,
+			'apellidos',
+			'edad' ,
+			'telefono',
+			'email' ,
+			'domicilio' ,
 		]
 		labels = {
-			'nombre': 'Nombre',
-			'sexo': 'Sexo',
-			'edad_aproximada': 'Edad aproximada',
-			'fecha_rescate':'Fecha de rescate',
-			'persona': 'Adoptante',
-			'vacuna': 'Vacunas',
+			'nombre' : 'Nombre' ,
+			'apellidos' : 'Apellidos',
+			'edad' : 'Edad',
+			'telefono' : 'Telefono',
+			'email' : 'Email',
+			'domicilio' : 'Domicilio',
 		}
 		widgets = {
-			'nombre': forms.TextInput(attrs={'class':'form-control'}),
-			'sexo': forms.TextInput(attrs={'class':'form-control'}),
-			'edad_aproximada': forms.TextInput(attrs={'class':'form-control'}),
-			'fecha_rescate': forms.TextInput(attrs={'class':'form-control'}),
-			'persona': forms.Select(attrs={'class':'form-control'}),
-			'vacuna': forms.CheckboxSelectMultiple(),
+			'nombre':forms.TextInput(attrs={'class':'form-control'}),
+			'apellidos':forms.TextInput(attrs={'class':'form-control'}),
+			'edad':forms.TextInput(attrs={'class':'form-control'}),
+			'telefono':forms.TextInput(attrs={'class':'form-control'}),
+			'email':forms.TextInput(attrs={'class':'form-control'}),
+			'domicilio':forms.Textarea(attrs={'class':'form-control'}),
+		}
+
+
+class SolicitudForm(forms.ModelForm):
+
+	class Meta:
+		model = Solicitud
+		fields = [
+			'numero_mascotas',
+			'razones'
+
+		]
+
+		labels = {
+			'numero_mascotas': 'Numero de mascotas',
+			'razones' : 'Razones para adoptar',
+
+
+		}
+		
+
+		widgets = {
+			'numero_mascotas':forms.TextInput(attrs={'class':'form-control'}),
+			'razones':forms.Textarea(attrs={'class':'form-control'}),
+
 		}

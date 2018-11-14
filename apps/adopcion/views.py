@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from apps.adopcion.models import Persona, Solicitud
@@ -10,7 +10,6 @@ from apps.adopcion.forms import PersonaForm, SolicitudForm
 def index_adopcion(request):
 	return HttpResponse("Adopcion is coming")
 
-"""Lista de view muestra todo, no hay pa que hacer lo otro que es mas code"""
 class SolicitudList(ListView):
 	model = Solicitud
 	template_name = 'adopcion/solicitud_list.html'
@@ -21,7 +20,7 @@ class SolicitudCreate(CreateView):
 	template_name = 'adopcion/solicitud_form.html'
 	form_class = SolicitudForm
 	second_form_class = PersonaForm
-	success_url = reverse_lazy('adopcion:solicitud_listar')
+	success_url = reverse_lazy('solicitud_listar')
 
 	def get_context_data(self, **kwargs):
 		context = super(SolicitudCreate, self).get_context_data(**kwargs)
@@ -51,7 +50,7 @@ class SolicitudUpdate(UpdateView):
 	template_name = 'adopcion/solicitud_form.html'
 	form_class = SolicitudForm
 	second_form_class = PersonaForm
-	success_url = reverse_lazy('adopcion:solicitud_listar')
+	success_url = reverse_lazy('solicitud_listar')
 
 
 	def get_context_data(self, **kwargs):
@@ -84,4 +83,4 @@ class SolicitudUpdate(UpdateView):
 class SolicitudDelete(DeleteView):
 	model = Solicitud
 	template_name = 'adopcion/solicitud_delete.html'
-	success_url = reverse_lazy('adopcion:solicitud_listar')
+	success_url = reverse_lazy('solicitud_listar')
