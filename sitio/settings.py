@@ -125,6 +125,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
-LOGIN_REDIRECT_URL = reverse_lazy('solicitud_listar')
+LOGIN_REDIRECT_URL = 'solicitud_listar'
 
-LOGOUT_REDIRECT_URL = reverse_lazy('login')
+LOGOUT_REDIRECT_URL = 'sesion'
